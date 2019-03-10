@@ -77,7 +77,7 @@ class TLDetector(object):
 
         """
         second_count = time.time()
-        if second_count - self.first_count < 1:
+        if second_count - self.first_count < 2:
             return
         self.has_image = True
         self.camera_image = msg

@@ -45,7 +45,7 @@ class WaypointUpdater(object):
         self.loop()
 
     def loop(self):
-        rate = rospy.Rate(0.5)
+        rate = rospy.Rate(1)
         while not rospy.is_shutdown():
             if self.pose and self.base_lane:
                 # Get closest waypoint
@@ -101,7 +101,7 @@ class WaypointUpdater(object):
 
             stop_idx = max(self.stopline_wp_idx - closest_idx - 2, 0)  ## Two waypoints back from line so front of car stops at line
             dist = self.distance(waypoints, i, stop_idx)
-            vel = math.sqrt(2 * 0.2 * dist)
+            vel = math.sqrt(2 * 0.5 * dist)
             if vel < 1.0:
                 vel = 0.0
 
